@@ -25,6 +25,13 @@ class PersonaDmElement extends PolymerElement {
           handle-as="json" >
       </iron-ajax>
 
+      <iron-ajax
+          id = "create"
+          url="{{baseUrlApi}}/persona"
+          method="post"
+          handle-as="json" >
+      </iron-ajax>
+
 
     `;
   }
@@ -38,7 +45,12 @@ class PersonaDmElement extends PolymerElement {
   }
 
   documentsTypeList(onSuccess, onError) {
-    this.$.documentsType.generateRequest().completes.then(onSuccess).catch(onError);
+    this.$.documentsType.generateRequest().completes.then(onSuccess || ((xhr)=>console.log(xhr)) ).catch(onError || ((error)=>console.log(error)));
+  }
+
+  create(body, onSuccess, onError) {
+    this.$.create.body = JSON.stringify(body);
+    this.$.create.generateRequest().completes.then(onSuccess || ((xhr)=>console.log(xhr)) ).catch(onError || ((error)=>console.log(error)));
   }
 
 }
