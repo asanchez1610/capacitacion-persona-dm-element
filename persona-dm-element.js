@@ -29,6 +29,7 @@ class PersonaDmElement extends PolymerElement {
           id = "create"
           url="{{baseUrlApi}}/persona"
           method="post"
+          content-type = "application/json"
           handle-as="json" >
       </iron-ajax>
 
