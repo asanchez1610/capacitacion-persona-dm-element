@@ -41,18 +41,6 @@ class PersonaDmElement extends PolymerElement {
     this.$.documentsType.generateRequest().completes.then(onSuccess).catch(onError);
   }
 
-  connectedCallback (){
-    super.ready();
-    console.log('connectedCallback');
-    
-    this.documentsTypeList((xhr)=>{
-      console.log(xhr.response);
-    }, (error)=>{
-      console.log('Error:', error);
-    });
-  }
-
-
 }
 
 window.customElements.define('persona-dm-element', PersonaDmElement);
